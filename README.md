@@ -1,38 +1,23 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/wokwi_test/badge.svg) ![](../../workflows/fpga/badge.svg)
+# 4-bit Comparator with 7-Segment Display
 
-# Tiny Tapeout Wokwi Project Template
+## Overview
+This circuit implements a **4-bit magnitude comparator** using basic logic gates in Wokwi.  
+Two 4-bit values (A and B) are entered via the DIP switch (`sw1`). The logic compares whether **A > B** and outputs the result to a 7-segment display.
 
-- [Read the documentation for project](docs/info.md)
+### Inputs
+- `ttin:IN0…IN3` → 4-bit number **A** (`IN0 = MSB`, `IN3 = LSB`)  
+- `ttin:IN4…IN7` → 4-bit number **B** (`IN4 = MSB`, `IN7 = LSB`)  
 
-## What is Tiny Tapeout?
+### Outputs
+- The comparator result is routed through `ttout:OUTx` pins to the 7-segment display.  
+- The display shows:  
+  - **“1”** → if A > B  
+  - **“0”** → otherwise (A ≤ B)  
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+## How to Use
+Flip the DIP switches (`sw1`) to set binary values for A and B.  
 
-To learn more and get started, visit https://tinytapeout.com.
+- Left group (`IN0–IN3`) sets **A**  
+- Right group (`IN4–IN7`) sets **B**  
 
-## Wokwi Projects
-
-Edit the [info.yaml](info.yaml) and change the `wokwi_id` to the ID of your Wokwi project. You can find the ID in the URL of your project, it's the big number after `wokwi.com/projects/`.
-
-The GitHub action will automatically fetch the digital netlist from Wokwi and build the ASIC files.
-
-## Enable GitHub actions to build the results page
-
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
-
-## Resources
-
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
-
-## What next?
-
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
+The comparator logic evaluates A and B in real time, and the 7-segment display immediately shows the result of the comparison.
